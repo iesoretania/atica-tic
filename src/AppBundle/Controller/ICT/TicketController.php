@@ -145,6 +145,10 @@ class TicketController extends Controller
 
         if ($f) {
             switch ($f) {
+                case 0:
+                    $queryBuilder
+                        ->andWhere('t.closedOn IS NULL');
+                    break;
                 case 1:
                     $queryBuilder
                         ->andWhere('t.closedOn IS NULL')
@@ -156,6 +160,8 @@ class TicketController extends Controller
                     break;
                 case 3:
                     $queryBuilder->andWhere('t.assignee IS NULL');
+                    break;
+                case 4:
                     break;
             }
         }
