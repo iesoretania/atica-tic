@@ -51,8 +51,11 @@
 
 {% block before_table %}
     <div class="btn-group btn-group-toggle" id="filter" data-toggle="buttons">
+        <label class="btn btn-secondary">
+            <input type="radio" name="filter" value="4" autocomplete="off" {% if f == 4 %}checked{% endif %}> {{ 'form.filter.show_all'|trans }}
+        </label>
         <label class="btn btn-secondary active">
-            <input type="radio" name="filter" value="0" autocomplete="off" {% if f == 0 %}checked{% endif %}> {{ 'form.filter.show_all'|trans }}
+            <input type="radio" name="filter" value="0" autocomplete="off" {% if f == 0 %}checked{% endif %}> {{ 'form.filter.opened'|trans }}
         </label>
         <label class="btn btn-secondary">
             <input type="radio" name="filter" value="1" autocomplete="off" {% if f == 1 %}checked{% endif %}> {{ 'form.filter.late'|trans }}

@@ -143,21 +143,25 @@ class TicketController extends Controller
                 ->setParameter('tq', '%' . $q . '%');
         }
 
-        if ($f) {
-            switch ($f) {
-                case 1:
-                    $queryBuilder
-                        ->andWhere('t.closedOn IS NULL')
-                        ->andWhere('t.dueOn <= :duedate')
-                        ->setParameter('duedate', new \DateTime("P1 week"));
-                    break;
-                case 2:
-                    $queryBuilder->andWhere('t.closedOn IS NOT NULL');
-                    break;
-                case 3:
-                    $queryBuilder->andWhere('t.assignee IS NULL');
-                    break;
-            }
+        switch ($f) {
+            case 0:
+                $queryBuilder
+                    ->andWhere('t.closedOn IS NULL');
+                break;
+            case 1:
+                $queryBuilder
+                    ->andWhere('t.closedOn IS NULL')
+                    ->andWhere('t.dueOn <= :duedate')
+                    ->setParameter('duedate', new \DateTime("P1 week"));
+                break;
+            case 2:
+                $queryBuilder->andWhere('t.closedOn IS NOT NULL');
+                break;
+            case 3:
+                $queryBuilder->andWhere('t.assignee IS NULL');
+                break;
+            case 4:
+                break;
         }
 
         $queryBuilder
